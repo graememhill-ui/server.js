@@ -38,6 +38,7 @@ app.get("/relay/:key/*", async (req, res) => {
     const tail = req.params[0] || "";
     const query = req.url.includes("?") ? req.url.split("?")[1] : "";
     const url = `${TARGET_BASE.replace(/\/+$/,"")}/${tail}${query ? "?" + query : ""}`;
+    console.log("Proxying to:", url);
 
     // Retry with backoff
     let lastErr;
